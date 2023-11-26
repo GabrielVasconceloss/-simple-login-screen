@@ -3,6 +3,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
+
+
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+
+class Home(TemplateView):
+    template_name = 'home.html'
 
 
 def register(request):
