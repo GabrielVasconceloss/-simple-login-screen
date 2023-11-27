@@ -45,7 +45,7 @@ def login(request):
         user = authenticate(username=username, password=password)
         if user:
             auth_login(request, user)
-            return HttpResponse('Pode entrar zé')
+            return render(request, 'home.html')
         else:
             return HttpResponse('Não ache man ' + str(user))
 
