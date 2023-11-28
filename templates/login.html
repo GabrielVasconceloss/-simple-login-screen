@@ -1,18 +1,30 @@
 {% extends 'index.html' %}
 
+{% block title %}
+    <title>Gabriel - Login</title>
+{% endblock %}
+
+{% block nav-cont %}
+
+{% endblock %}
+
 {% block content %}
     <div class="container mg-cv">
-        <form action="{% url 'login' %}" method="POST">{% csrf_token %}
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" name="username" id="username" aria-describedby="username">
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="password">
-              </div>
-              <button type="submit" class="btn btn-primary">Logar</button>
-        </form>
+        <div class="login-container bg-dark">
+            <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+                  <h2 class="label-white" > Login  </h2>
+                  <div class="mb-3">
+                    <label for="username" class="form-label label-white">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Username..." id="username" aria-describedby="username">
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label label-white">Password</label>
+                    <input type="password" class="form-control" placeholder="Password..." name="password" id="password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Logar</button>
+            </form>
+        </div>
     </div>
 {% endblock %}
+
 
