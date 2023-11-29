@@ -1,13 +1,14 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
+@login_required
+def index_view(request):
+    return render(request, 'index.html')
 
 
 class Home(TemplateView):
@@ -50,6 +51,11 @@ def login(request):
             return HttpResponse('Não ache man ' + str(user))
 
 
-@login_required(login_url='auth/login/')
+def Logout(request):
+    logout(request)
+    return render(request, 'login.html')
+
+@login_required
 def platform(request):
     return render(request, 'login.html')
+

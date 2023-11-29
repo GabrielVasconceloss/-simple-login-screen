@@ -4,7 +4,7 @@
     <div class="container mg-cv">
             <form action="{% url 'register' %}" method="POST">{% csrf_token %}
                   <div class="mb-3">
-                    <label for="username" class="form-label label-white">Username</label>
+                    <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" name="username" id="username" aria-describedby="username">
                     <div id="username" class="form-text">We'll never share your username with anyone else.</div>
                   </div>
