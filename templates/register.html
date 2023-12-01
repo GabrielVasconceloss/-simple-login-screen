@@ -1,31 +1,37 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <div class="container mg-cv">
-            <form action="{% url 'register' %}" method="POST">{% csrf_token %}
-                  <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username" id="username" aria-describedby="username">
-                    <div id="username" class="form-text">We'll never share your username with anyone else.</div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="firstname" class="form-label">First name</label>
-                    <input type="text" class="form-control" name="firstname" id="firstname" aria-describedby="firstname">
-                  </div>
-                  <div class="mb-3">
-                    <label for="lastname" class="form-label">Last name</label>
-                    <input type="text" class="form-control" name="lastname" id="lastname" aria-describedby="lastname">
-                  </div>
-                  <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                  </div>
-                  <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="password">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Register</button>
-            </form>
+    <div class="container-fluid mt-5 mb-5">
+        <div class="row justify-content-center ">
+            <div class="col-md-5 bg-dark rounded-4 p-3">
+                <div class="card-body">
+                    <form action="{% url 'register' %}" method="POST">{% csrf_token %}
+                      <h2 class="label-white" > Register User  </h2>
+                      <div class="mb-3">
+                        <label for="username" class="form-label label-white">Username</label>
+                        <input type="text" class="form-control" placeholder="Username..." name="username" id="username" aria-describedby="username">
+                      </div>
+                      <div class="mb-3">
+                        <label for="firstname" class="form-label label-white">First name</label>
+                        <input type="text" class="form-control" placeholder="First name..." name="firstname" id="firstname" aria-describedby="firstname">
+                      </div>
+                      <div class="mb-3">
+                        <label for="lastname" class="form-label label-white">Last name</label>
+                        <input type="text" class="form-control" placeholder="Last name..." name="lastname" id="lastname" aria-describedby="lastname">
+                      </div>
+                      <div class="mb-3">
+                        <label for="email" class="form-label label-white">Email address</label>
+                        <input type="email" class="form-control" placeholder="Email address..." name="email" id="email" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label label-white">Password</label>
+                        <input type="password" placeholder="Password..." class="form-control" name="password" id="password">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+                </div>
+            </div>
         </div>
+    </div>
+
 {% endblock %}
