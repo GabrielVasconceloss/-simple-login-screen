@@ -28,6 +28,13 @@
                         <input type="password" placeholder="Password..." class="form-control" name="password" id="password">
                       </div>
                       <button type="submit" class="btn btn-primary">Register</button>
+                      {% if messages %}
+                        {% for m in messages %}
+                            <div class="alert alert-{{ m.extra_tags }} mt-2" role="alert">
+                              {{ m }}
+                            </div>
+                        {% endfor %}
+                      {% endif %}
                 </form>
                 </div>
             </div>

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.views.generic import TemplateView
 
 
@@ -28,13 +29,15 @@ def register(request):
 
         user = User.objects.filter(username=username).filter()
         if user:
-            return HttpResponse('Ja existe um User com esse nome')
+            messages.info(request, 'Username already registered!', extra_tags='danger')
+            return render(request, 'register.html')
 
         user = User.objects.create_user(username=username, first_name=firstname, last_name=lastname,
                                         email=email, password=password)
         user.save()
 
-        return HttpResponse(f'Usuario {username} Cadastrado com susseso ')
+        messages.info(request, 'User created successfully!', extra_tags='success')
+        return render(request, 'login.html')
 
 
 def login(request):
@@ -49,7 +52,8 @@ def login(request):
             auth_login(request, user)
             return render(request, 'home.html')
         else:
-            return HttpResponse('Não ache man ' + str(user))
+            messages.info(request, 'User not found!', extra_tags='danger')
+            return render(request, 'login.html')
 
 
 def Logout(request):
