@@ -1,10 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.views.generic import TemplateView
 
 
 @login_required
@@ -32,12 +31,15 @@ def register(request):
             messages.info(request, 'Username already registered!', extra_tags='danger')
             return render(request, 'register.html')
 
-        user = User.objects.create_user(username=username, first_name=firstname, last_name=lastname,
-                                        email=email, password=password)
-        user.save()
-
-        messages.info(request, 'User created successfully!', extra_tags='success')
-        return render(request, 'login.html')
+        if password.lower() == password:
+            messages.info(request, 'Password must contain an uppercase!', extra_tags='danger')
+            return render(request, 'register.html')
+        else:
+            user = User.objects.create_user(username=username, first_name=firstname, last_name=lastname,
+                                            email=email, password=password)
+            user.save()
+            messages.info(request, 'User created successfully!', extra_tags='success')
+            return render(request, 'login.html')
 
 
 def login(request):
@@ -56,11 +58,6 @@ def login(request):
             return render(request, 'login.html')
 
 
-def Logout(request):
+def logout_(request):
     logout(request)
     return render(request, 'login.html')
-
-@login_required
-def platform(request):
-    return render(request, 'login.html')
-
